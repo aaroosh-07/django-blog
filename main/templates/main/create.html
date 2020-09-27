@@ -1,0 +1,15 @@
+{%extends "main/base.html"%}
+
+{%block title%}
+    create page
+{%endblock%}
+
+{% load crispy_forms_tags %}
+{%block content%}
+
+    <form action="/create/" method = "POST">
+        {% csrf_token %}
+        {{form|crispy}}
+            <button class="btn btn-outline-success" name="save", type="submit">create new entry</button>
+    </form>
+{%endblock%}

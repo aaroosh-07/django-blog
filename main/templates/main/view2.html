@@ -1,0 +1,22 @@
+{%extends "main/base.html"%}
+
+{%block title%}
+{{ls.name}}
+{%endblock%}
+
+{%block content%}
+    <h1>{{ls.name}}</h1>
+    <p>{{ls.content}}</p>
+    <ul>
+    {%for item in ls.item_set.all%}
+        <li>{{item.name}}</li>
+        <li>{{item.text}}</li>
+        <li>{{item.date_posted}}</li>
+    {%endfor%}
+    </ul>
+    <form method="POST" action=#>
+        {%csrf_token%}
+    <input type="text" name="item" >
+    <button type="submit" name="save" value="save">Add Item</button>
+    </form>
+{%endblock%}
