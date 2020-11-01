@@ -4,6 +4,14 @@
 {%endblock%}
 
 {%block content%}
+
+  <div class="media">
+    <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
+    <div class="media-body">
+      <h2 class="account-heading">{{ user.username }}</h2>
+      <p class="text-secondary">{{ user.email }}</p>
+    </div>
+  </div>
 <div class="row row-cols-1 row-cols-md-3">
     {% for post in posts %}
     <div class="col mb-4">

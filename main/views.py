@@ -43,20 +43,21 @@ def profile(response , username):
     posts = u.todolist_set.all()
     return render(response , "main/profile.html",{'posts':posts})
 
-def update(response,id):
-    if response.user.is_authenticated == False:
-        return render(response,"register/login.html",{}) 
+def update(response,id): 
     
     obj = ToDoList.objects.get(id = id)
-    form = CreateForm(obj)
-
+    form = CreateForm()
+    form.name = obj.name
+    form.content = obj.content
+    print(form)
     if response.method == "POST":
         form = CreateForm(response.POST)
         if form.is_valid():
             n = form.cleaned_data["name"]
             t1 = form.cleaned_data["content"]
-            t = ToDoList(name = n,content = t1,author = response.user)
-            t.save()
+            obj.name = n1
+            obj.content = t1
+            obj.save()
     else:
         pass
     
