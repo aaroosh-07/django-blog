@@ -5,8 +5,13 @@
 {%endblock%}
 
 {%block content%}
-    <h1>{{ls.name}}</h1>
-    <p>{{ls.content}}</p>
+<div class="card">
+    <div class="card-body">
+        <h1 class="card-heading">{{ls.name}}</h1>
+        <div class="dropdown-divider"></div>
+        <p>{{ls.content}}</p>
+    </div>
+</div>
     <ul>
     {%for item in ls.item_set.all%}
         <li>{{item.name}}</li>

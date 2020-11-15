@@ -6,7 +6,6 @@
 
 {% load crispy_forms_tags %}
 {%block content%}
-
     <form action="/create/" method = "POST">
         {% csrf_token %}
         {{form|crispy}}

@@ -1,8 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render , redirect
+from django.contrib import messages
 from django.http import HttpResponse
 from .models import ToDoList , Item
 from .forms import CreateForm
 from django.contrib.auth.models import User
+from register.forms import UserForms , ProfileUpdateForm
 # Create your views here.
 
 def index(response,id):
@@ -41,7 +43,10 @@ def create(response):
 def profile(response , username):
     u = User.objects.get(username=username)
     posts = u.todolist_set.all()
-    return render(response , "main/profile.html",{'posts':posts})
+    content={
+        'posts':posts
+    }
+    return render(response , "main/profile.html",content)
 
 def update(response,id): 
     
@@ -64,4 +69,24 @@ def update(response,id):
     return render(response , "main/create.html" ,{"form":form})
 
 
+def edit(response):
+    if response.user.is_authenticated:
+        if response.method == "POST":
+            u_form = UserForms(response.POST , instance = response.user)
+            u_profile = ProfileUpdateForm(response.POST , response.FILES , instance = response.user.profile)
+            if u_form.is_valid() and u_profile.is_valid():
+                u_form.save()
+                u_profile.save()
+                messages.success(response, f'Your account has been updated!')
+                return redirect(profile , response.user.get_username())
+        else:
+            u_form = UserForms(instance = response.user)
+            u_profile = ProfileUpdateForm(instance = response.user.profile)
+            content = {
+                'u_form':u_form,
+                'u_profile':u_profile
+            }
+            return render(response , "main/edit.html",content)
+    else:
+        return redirect(home)
 
