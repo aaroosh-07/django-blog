@@ -1,2 +1,4 @@
 db.sqlite3
 main/__pycache__
+mysite/_pycache_
+register/_pycache_
