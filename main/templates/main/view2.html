@@ -15,13 +15,15 @@
     <ul>
     {%for item in ls.item_set.all%}
         <li>{{item.name}}</li>
-        <li>{{item.text}}</li>
-        <li>{{item.date_posted}}</li>
+        <div>{{item.text}}</div>
+        <div>{{item.date_posted}}</div>
     {%endfor%}
     </ul>
+    {% if user.is_authenticated %}
     <form method="POST" action=#>
         {%csrf_token%}
     <input type="text" name="item" >
-    <button type="submit" name="save" value="save">Add Item</button>
+    <button type="submit" name="save" value="save">Add Comment</button>
     </form>
+    {% endif %}
 {%endblock%}
