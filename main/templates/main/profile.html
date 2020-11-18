@@ -1,32 +1,28 @@
 {%extends "main/base.html" %}
 {%block title%}
-    {{user.get_username}}
+    {{u.get_username}}
 {%endblock%}
 
 {%block content%}
 
   <div class="card border-light">
     <div class="row no-gutters">
-     
         <img class="rounded-circle account-img" src="{{ u.profile.image.url }}">
-      
-      
         <div class="card-body">
           <h2 class="card-title">{{ u.first_name }} {{ u.last_name }}</h2>
           <p class="card-text"> {{ u.profile.description}} </p>
           <p class="text-secondary">{{ u.email }}</p>
         </div>
-      
     </div> 
   </div>
   
-<div class="row row-cols-1 row-cols-md-3">
+<div class="row row-cols-1 row-cols-md-3" style=" padding: 10px; ">
     {% for post in posts %}
     <div class="col mb-4">
       <div class="card">
         <div class="card-body">
           <a href="{% url 'index' post.id %}" style="text-decoration: none;"><h5 class="card-title">{{post.name}}</h5></a>
-          <p class="card-text">{{post.content}}</p>
+         <!-- <p class="card-text">{{post.content}}</p> -->
         </div>
       </div>
     </div>
