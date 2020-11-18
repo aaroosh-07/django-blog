@@ -44,6 +44,7 @@ def profile(response , username):
     u = User.objects.get(username=username)
     posts = u.todolist_set.all()
     content={
+        'u':u,
         'posts':posts
     }
     return render(response , "main/profile.html",content)

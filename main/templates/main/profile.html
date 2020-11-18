@@ -5,14 +5,21 @@
 
 {%block content%}
 
-  <div class="media">
-    <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
-    <div class="media-body">
-      <h2 class="account-heading">{{ user.first_name }}{{ user.last_name }}</h2>
-      <p class="text-primary"> {{ user.profile.description}} </p>
-      <p class="text-secondary">{{ user.email }}</p>
-    </div>
+  <div class="card border-light">
+    <div class="row no-gutters">
+     
+        <img class="rounded-circle account-img" src="{{ u.profile.image.url }}">
+      
+      
+        <div class="card-body">
+          <h2 class="card-title">{{ u.first_name }} {{ u.last_name }}</h2>
+          <p class="card-text"> {{ u.profile.description}} </p>
+          <p class="text-secondary">{{ u.email }}</p>
+        </div>
+      
+    </div> 
   </div>
+  
 <div class="row row-cols-1 row-cols-md-3">
     {% for post in posts %}
     <div class="col mb-4">
