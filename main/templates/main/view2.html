@@ -14,9 +14,13 @@
 </div>
     <ul>
     {%for item in ls.item_set.all%}
-        <li>{{item.name}}</li>
-        <div>{{item.text}}</div>
-        <div>{{item.date_posted}}</div>
+    <div class="card" style="width:400px">
+        <div class="card-body">
+          <h5 class="card-title">{{item.name}}</h5>
+          <p class="card-text">{{item.text}}</p>
+          <div class="card-footer">{{item.date_posted}}</div>
+        </div>
+      </div>
     {%endfor%}
     </ul>
     {% if user.is_authenticated %}
