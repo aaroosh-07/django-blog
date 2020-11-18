@@ -5,16 +5,19 @@
 {%endblock%}
 
 {%block content%}
-<div class="card">
+<div class="card" style="margin-bottom: 10px;">
     <div class="card-body">
         <h1 class="card-heading">{{ls.name}}</h1>
         <div class="dropdown-divider"></div>
         <p>{{ls.content}}</p>
     </div>
 </div>
+
+    <h3 class="3">Comments</h3>
+    <div class="dropdown-divider"></div>
     <ul>
     {%for item in ls.item_set.all%}
-    <div class="card" style="width:400px">
+    <div class="card" style="width:400px ; margin-bottom: 20px;">
         <div class="card-body">
           <h5 class="card-title">{{item.name}}</h5>
           <p class="card-text">{{item.text}}</p>

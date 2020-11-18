@@ -8,7 +8,7 @@ home
 <h1 style="text-align: center;">{% if user.is_authenticated %}{{user.get_username}}{% endif %} Welcome to MicroBlog</h1>
 <div class="row row-cols-1 row-cols-md-3">
     {% for post in posts %}
-        <div class="card text-left" style="width: 18rem; ">
+        <div class="card text-left" style="width: 18rem;">
             <div class="card-body" >
             <a href="{% url 'index' post.id %}" style="text-decoration: none;"><h5 class="card-title">{{post.name}}</h5></a>
             <a href="{% url 'profile' post.author.username%}" style="text-decoration: none;"><h6 class="card-subtitle mb-2 text-muted">{{post.author}}</h6></a>
