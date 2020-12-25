@@ -1,0 +1,117 @@
+{%extends "main/base.html" %}
+{%block title%}
+    {{user.get_username}}
+{%endblock%}
+
+{%block content%}
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Portfolio</title>
+	<!-- css files -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.3.1/css/bulma.min.css">
+	<link rel="stylesheet" type="text/css" href="{% static 'assets/css/styles.css' %}">
+
+	<link rel="icon" type="image/x-icon" href="{% static 'assets/img/favicon.png' %}">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+	<body>
+		<!-- Navbar -->
+		<nav class="nav container void-background">
+
+			<div class="nav-right nav-menu">
+				<a class="nav-item" href="#about">About</a>
+				<a class="nav-item" href="#projects">Projects</a>
+				<a class="nav-item" href="#social">Social</a>
+			</div>
+
+			<!-- This "nav-toggle" hamburger menu is only visible on mobile -->
+			<!-- You need JavaScript to toggle the "is-active" class on "nav-menu" -->
+			<span class="nav-toggle">
+				<span></span>
+				<span></span>
+				<span></span>
+			</span>
+		</nav>
+				
+		<!-- About Me -->
+		<section id="about" class="section section-1">
+			<div class="container has-text-centered">
+				<!-- Source: https://flic.kr/p/pAZBNK -->
+				<img class="rounded-circle account-img" src="{{ u.profile.image.url }}">
+			</div>
+			<div class="container"></br>
+				<p class="intro">
+					<div class="card-body">
+					<!--<h1>{{ u.first_name }} {{ u.last_name }}</h1>-->
+					<h1 class="card-title">{{ u.first_name }} {{ u.last_name }}</h1>
+					<p class="card-text"> {{ u.profile.description}} </p>
+					<!--{{ u.profile.description}}-->
+					</div>
+				</p>
+			</div>
+		</section>
+		
+		<!-- Projects -->
+		<section  id="projects" class="section section-2">
+			<div class="container">
+				<div class="has-text-centered">
+					<h3 class="title is-3">Projects</h3>
+				</div>
+				
+				<div class="row row-cols-1 row-cols-md-3">
+					{% for post in posts %}
+					<div class="col mb-4">
+					  <div class="card">
+						<div class="card-body">
+						  <a href="{% url 'index' post.id %}" style="text-decoration: none;"><h5 class="card-title">{{post.name}}</h5></a>
+						  <p class="card-text">{{post.content}}</p>
+						</div>
+					  </div>
+					</div>
+					{% endfor %}
+				</div>
+				
+			</div>
+		</section>
+
+		<!-- Social -->
+		<section id="social" class="section section-3">
+			<div class="container">
+				<div class="has-text-centered">					
+					<h3 class="title is-3">Let's Socialize</h3>
+				</div>
+				<div class="social-container columns">
+					<div class="column is-6 has-text-centered">
+						<a target="_blank" href="https://www.linkedin.com/in/ayushman-mishra-261614190/"><img class="" src="{% static 'assets/img/linkedin.png' %}"></a>
+					</div>
+					<div class="column is-6 has-text-centered">
+						<a target="_blank" href="https://www.facebook.com/ayushman.mishra.18847"><img class="" src="{% static 'assets/img/facebook.png' %}"></a>
+					</div>
+				</div>
+				<div class="social-container columns">
+
+					<div class="column is-6 has-text-centered">
+						<a target="_blank" href="https://github.com/chetak123"><img class="" src="{% static 'assets/img/github.png' %}"></a>
+					</div>
+					<div class="column is-6 has-text-centered">
+						<a target="_blank" href="https://twitter.com/chetak1232"><img class="" src="{% static 'assets/img/twitter.png' %}"></a>
+					</div>
+				</div>
+			</div>
+		</section>	
+		
+		<!-- Footer -->
+		<section class="section-4 has-text-centered container">
+			<a>{{ u.email }}</a>
+		</section>
+		
+		<!-- Scripts  -->
+		<script src="{% static 'controller.js' %}"></script>		
+	</body>	
+</html>
+
+{%endblock%}

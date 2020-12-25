@@ -47,7 +47,7 @@ def profile(response , username):
         'u':u,
         'posts':posts
     }
-    return render(response , "main/profile.html",content)
+    return render(response , "main/profile2.html",content)
 
 def update(response,id): 
     
