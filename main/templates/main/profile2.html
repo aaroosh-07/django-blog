@@ -17,6 +17,17 @@
 
 	<link rel="icon" type="image/x-icon" href="{% static 'assets/img/favicon.png' %}">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<style>
+		body{
+			color: aliceblue;
+		}
+		h1 {
+			color: white;
+		}
+		.card-title{
+			color: white;
+		}
+	</style>
 </head>
 	<body>
 		<!-- Navbar -->
@@ -47,8 +58,8 @@
 				<p class="intro">
 					<div class="card-body">
 					<!--<h1>{{ u.first_name }} {{ u.last_name }}</h1>-->
-					<h1 class="card-title">{{ u.first_name }} {{ u.last_name }}</h1>
-					<p class="card-text"> {{ u.profile.description}} </p>
+					<h1 style="color: white; class="card-title">{{ u.first_name }} {{ u.last_name }}</h1>
+					<p style="color: white;class="card-text"> {{ u.profile.description}} </p>
 					<!--{{ u.profile.description}}-->
 					</div>
 				</p>
@@ -59,7 +70,7 @@
 		<section  id="projects" class="section section-2">
 			<div class="container">
 				<div class="has-text-centered">
-					<h3 class="title is-3">Projects</h3>
+					<h1 style="color: white;class="title is-3">Blogs</h3>
 				</div>
 				
 				<div class="row row-cols-1 row-cols-md-3">
@@ -81,8 +92,10 @@
 		<!-- Social -->
 		<section id="social" class="section section-3">
 			<div class="container">
-				<div class="has-text-centered">					
-					<h3 class="title is-3">Let's Socialize</h3>
+				<div class="has-text-centered">		
+					<section class="title is-3">			
+					<h3 style="color: white">Let's Socialize</h3>
+					</section>
 				</div>
 				<div class="social-container columns">
 					<div class="column is-6 has-text-centered">
@@ -95,7 +108,7 @@
 				<div class="social-container columns">
 
 					<div class="column is-6 has-text-centered">
-						<a target="_blank" href="https://github.com/chetak123"><img class="" src="{% static 'assets/img/github.png' %}"></a>
+						<a target="_blank" href={{ u.profile.social }} ><img class="" src="{% static 'assets/img/github.png' %}"></a>
 					</div>
 					<div class="column is-6 has-text-centered">
 						<a target="_blank" href="https://twitter.com/chetak1232"><img class="" src="{% static 'assets/img/twitter.png' %}"></a>
@@ -106,7 +119,7 @@
 		
 		<!-- Footer -->
 		<section class="section-4 has-text-centered container">
-			<a>{{ u.email }}</a>
+			<a style="color: white;">{{ u.email }}</a>
 		</section>
 		
 		<!-- Scripts  -->
